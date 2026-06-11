@@ -1,0 +1,92 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+locale: fr
+
+collections:
+
+  # ─── ACTUALITÉS ──────────────────────────────────────
+  - name: "actualites"
+    label: "Actualités"
+    label_singular: "Article"
+    folder: "_actualites"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titre", name: "titre", widget: "string" }
+      - { label: "Catégorie", name: "categorie", widget: "select",
+          options: ["Intelligence Artificielle", "Success Story", "Expertise", "Événement", "Partenariat", "Entreprise"] }
+      - { label: "Date de publication", name: "date", widget: "datetime",
+          format: "DD MMM. YYYY", date_format: "DD MMM. YYYY", time_format: false }
+      - { label: "Image de couverture", name: "image", widget: "image" }
+      - { label: "Extrait", name: "extrait", widget: "text",
+          hint: "Court résumé affiché dans la grille (2-3 phrases max)" }
+      - { label: "Contenu de l'article", name: "body", widget: "markdown" }
+
+  # ─── OFFRES D'EMPLOI ─────────────────────────────────
+  - name: "offres"
+    label: "Offres d'emploi"
+    label_singular: "Offre"
+    folder: "_offres"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Intitulé du poste", name: "titre", widget: "string" }
+      - { label: "Département", name: "departement", widget: "select",
+          options: ["Design & Digital", "Intelligence Artificielle", "Consulting", "Technology", "Marketing", "Finance", "RH"] }
+      - { label: "Lieu", name: "lieu", widget: "string", hint: "Ex : Casablanca, Maroc" }
+      - { label: "Type de contrat", name: "type", widget: "select",
+          options: ["CDI", "CDD", "Stage", "Alternance", "Freelance"] }
+      - { label: "Niveau", name: "niveau", widget: "select",
+          options: ["Junior", "Confirmé", "Senior", "Manager", "Directeur"] }
+      - { label: "Description du poste", name: "description", widget: "text" }
+      - label: "Missions"
+        name: "missions"
+        widget: "list"
+        field: { label: "Mission", name: "mission", widget: "string" }
+      - label: "Profil recherché"
+        name: "profil"
+        widget: "list"
+        field: { label: "Critère", name: "critere", widget: "string" }
+
+  # ─── SERVICES ────────────────────────────────────────
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "_services"
+    create: false
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titre", name: "titre", widget: "string" }
+      - { label: "Sous-titre", name: "sous_titre", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - label: "Points clés"
+        name: "features"
+        widget: "list"
+        field: { label: "Point", name: "point", widget: "string" }
+
+  # ─── PARAMÈTRES GÉNÉRAUX ─────────────────────────────
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - label: "Informations générales"
+        name: "general"
+        file: "_settings/general.json"
+        fields:
+          - { label: "Nom du site", name: "site_name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Email de contact", name: "email", widget: "string" }
+          - { label: "Téléphone", name: "telephone", widget: "string" }
+          - { label: "Adresse principale", name: "adresse", widget: "string" }
+          - { label: "URL LinkedIn", name: "linkedin", widget: "string" }
