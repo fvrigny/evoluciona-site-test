@@ -1,0 +1,143 @@
+{
+  "actualites": [
+    {
+      "id": 1,
+      "titre": "Evoluciona lance une solution IA prédictive pour les centres de contact",
+      "categorie": "Intelligence Artificielle",
+      "date": "15 Mai 2024",
+      "image": "assets/images/img-insght1.jpg",
+      "extrait": "Notre nouvelle solution combine le traitement du langage naturel et l'analyse comportementale pour anticiper les besoins clients avec une précision de 94%."
+    },
+    {
+      "id": 2,
+      "titre": "Partenariat stratégique avec un leader européen de la CX digitale",
+      "categorie": "Partenariat",
+      "date": "08 Mai 2024",
+      "image": "assets/images/img-insght2.jpg",
+      "extrait": "Ce partenariat renforce notre capacité à déployer des solutions omnicanales de nouvelle génération pour nos clients en Europe et en Afrique."
+    },
+    {
+      "id": 3,
+      "titre": "Optimisation des opérations : retour d'expérience secteur Retail",
+      "categorie": "Success Story",
+      "date": "24 Avr. 2024",
+      "image": "assets/images/img-insght3.jpg",
+      "extrait": "Comment nous avons réduit de 35% le taux de churn d'un acteur majeur de la distribution grâce à une stratégie d'engagement client repensée."
+    },
+    {
+      "id": 4,
+      "titre": "Speech Analytics : 6 indicateurs clés pour piloter votre centre d'appels",
+      "categorie": "Expertise",
+      "date": "10 Avr. 2024",
+      "image": "assets/images/img-insght4.jpg",
+      "extrait": "Découvrez comment nos experts utilisent l'analyse de la parole pour transformer les données conversationnelles en leviers de performance opérationnelle."
+    },
+    {
+      "id": 5,
+      "titre": "Evoluciona certifiée ISO 27001 : sécurité des données renforcée",
+      "categorie": "Entreprise",
+      "date": "02 Avr. 2024",
+      "image": "assets/images/img-slide1.jpg",
+      "extrait": "Cette certification confirme notre engagement envers la protection des données de nos clients et le respect des standards internationaux de cybersécurité."
+    },
+    {
+      "id": 6,
+      "titre": "Webinar : Transformer l'expérience client avec l'IA générative",
+      "categorie": "Événement",
+      "date": "18 Mar. 2024",
+      "image": "assets/images/img-slide2.jpg",
+      "extrait": "Rejoignez nos experts pour un webinar exclusif sur les opportunités offertes par l'IA générative dans la transformation de l'expérience client."
+    }
+  ],
+  "offres": [
+    {
+      "id": 1,
+      "titre": "Lead UX Designer",
+      "departement": "Design & Digital",
+      "lieu": "Casablanca, Maroc",
+      "type": "CDI",
+      "niveau": "Senior",
+      "description": "Nous recherchons un Lead UX Designer pour piloter la conception d'expériences digitales centrées utilisateur pour nos clients grands comptes. Vous travaillerez en étroite collaboration avec les équipes produit, tech et stratégie.",
+      "missions": ["Définir la vision UX des projets", "Réaliser des recherches utilisateurs", "Produire wireframes et prototypes", "Encadrer une équipe de 3 designers junior", "Présenter les concepts aux clients"],
+      "profil": ["5+ ans d'expérience en UX Design", "Maîtrise de Figma et outils de prototypage", "Expérience en design system", "Excellent sens de la communication", "Anglais courant"]
+    },
+    {
+      "id": 2,
+      "titre": "Data Scientist — NLP & Speech Analytics",
+      "departement": "Intelligence Artificielle",
+      "lieu": "Casablanca, Maroc",
+      "type": "CDI",
+      "niveau": "Confirmé",
+      "description": "Rejoignez notre équipe IA pour développer des modèles de traitement du langage naturel appliqués à l'analyse de conversations et à la détection d'émotions client.",
+      "missions": ["Développer des modèles NLP pour l'analyse de la parole", "Entraîner et optimiser des modèles de classification", "Collaborer avec les équipes produit", "Documenter les approches et résultats", "Veille technologique IA/ML"],
+      "profil": ["Bac+5 en Data Science ou équivalent", "Maîtrise de Python, PyTorch/TensorFlow", "Expérience en NLP et traitement audio", "Connaissance des LLMs un plus", "2+ ans d'expérience"]
+    },
+    {
+      "id": 3,
+      "titre": "Consultant CX Transformation",
+      "departement": "Consulting",
+      "lieu": "Paris, France",
+      "type": "CDI",
+      "niveau": "Senior",
+      "description": "En tant que Consultant CX, vous accompagnez nos clients dans leur transformation de l'expérience client, de l'audit stratégique au déploiement opérationnel.",
+      "missions": ["Auditer les processus client existants", "Définir les roadmaps de transformation", "Piloter les projets de bout en bout", "Animer des ateliers de co-construction", "Mesurer et reporter les KPIs"],
+      "profil": ["7+ ans en conseil ou CX management", "Connaissance des outils CRM/CCaaS", "Fort sens analytique", "Excellentes qualités relationnelles", "Mobilité France/Maroc"]
+    },
+    {
+      "id": 4,
+      "titre": "Développeur Full Stack — React / Node.js",
+      "departement": "Technology",
+      "lieu": "Casablanca, Maroc",
+      "type": "CDI",
+      "niveau": "Confirmé",
+      "description": "Intégrez notre squad tech pour développer et maintenir nos plateformes digitales client, en appliquant les meilleures pratiques du développement moderne.",
+      "missions": ["Développer des features front et back", "Participer aux revues de code", "Contribuer à l'architecture technique", "Écrire des tests unitaires et d'intégration", "Collaborer en mode agile"],
+      "profil": ["3+ ans en développement Full Stack", "React, Node.js, TypeScript", "Connaissance des APIs REST/GraphQL", "Expérience CI/CD", "Esprit d'équipe"]
+    },
+    {
+      "id": 5,
+      "titre": "Chargé(e) de Communication Digitale",
+      "departement": "Marketing",
+      "lieu": "Casablanca, Maroc",
+      "type": "CDI",
+      "niveau": "Junior",
+      "description": "Vous gérez la présence digitale d'Evoluciona sur l'ensemble des canaux : réseaux sociaux, blog, newsletters et campagnes paid, avec un fort focus sur le marché EMEA.",
+      "missions": ["Animer les réseaux sociaux LinkedIn, Twitter", "Produire du contenu éditorial (articles, infographies)", "Piloter les campagnes email marketing", "Analyser les performances et reporter", "Coordonner avec les équipes créatives"],
+      "profil": ["Bac+3/5 en communication ou marketing digital", "Maîtrise des outils CMS et emailing", "Bonne plume en français et anglais", "Appétence pour les sujets tech/IA", "1-2 ans d'expérience minimum"]
+    }
+  ],
+  "services": [
+    {
+      "id": "digital",
+      "titre": "Advanced Digital Solutions",
+      "sous_titre": "Engage with your customers",
+      "description": "Nous vous accompagnons dans la transformation digitale de votre relation client. De la stratégie omnicanale au déploiement opérationnel, nous concevons des expériences digitales qui engagent, convertissent et fidélisent.",
+      "image": "assets/images/img-slide3.jpg",
+      "features": ["Stratégie omnicanale", "Portails clients self-service", "Chatbots & voicebots IA", "Optimisation des parcours digitaux"]
+    },
+    {
+      "id": "consulting",
+      "titre": "Consulting & Stratégie CX",
+      "sous_titre": "Understand your customers",
+      "description": "Nos consultants analysent vos processus, identifient les points de friction et co-construisent avec vous des roadmaps de transformation adaptées à vos enjeux métier et à votre marché.",
+      "image": "assets/images/img-slide1.jpg",
+      "features": ["Audit de l'expérience client", "Cartographie des parcours", "Définition des KPIs CX", "Accompagnement au changement"]
+    },
+    {
+      "id": "tech",
+      "titre": "Technological Solutions",
+      "sous_titre": "Power your operations",
+      "description": "Nous intégrons et développons les solutions technologiques qui industrialisent et modernisent vos opérations : CCaaS, CRM, plateformes d'engagement, solutions de workforce management.",
+      "image": "assets/images/img-slide2.jpg",
+      "features": ["Intégration CCaaS / CRM", "Développement sur mesure", "Migration cloud", "API & connecteurs"]
+    },
+    {
+      "id": "analytics",
+      "titre": "Analytics & Intelligence Artificielle",
+      "sous_titre": "Learn and predict",
+      "description": "Nos solutions d'analyse de données et d'IA transforment vos données opérationnelles en insights actionnables. Speech analytics, NLP, modèles prédictifs : l'intelligence au service de la performance.",
+      "image": "assets/images/enquire-img1.jpg",
+      "features": ["Speech & Text Analytics", "Modèles prédictifs", "Dashboards temps réel", "Détection des émotions client"]
+    }
+  ]
+}

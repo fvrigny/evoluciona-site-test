@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actualités — Evoluciona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .actu-section { padding: var(--section-pad); background: var(--gray-light); }
+    .filters { display: flex; gap: 10px; margin-bottom: 48px; flex-wrap: wrap; }
+    .filter-btn { font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; border: 1.5px solid #ddd; background: var(--white); color: var(--gray-text); cursor: pointer; transition: all 0.2s; border-radius: 2px; }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--teal); color: var(--teal); background: rgba(0,181,184,0.06); }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .news-card { background: var(--white); overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+    .news-card:hover { transform: translateY(-4px); }
+    .news-card-img { aspect-ratio: 16/10; overflow: hidden; }
+    .news-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .news-card:hover .news-card-img img { transform: scale(1.04); }
+    .news-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .news-card-body h3 { color: var(--dark); font-size: 17px; }
+    .news-card-body p { font-size: 13px; line-height: 1.65; }
+    .news-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 0.5px solid #eee; }
+    .news-date { font-size: 10px; color: var(--gray-text); }
+    .news-featured { grid-column: span 2; }
+    .news-featured .news-card-img { aspect-ratio: 16/7; }
+    .news-featured .news-card-body h3 { font-size: 22px; }
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 56px; }
+    .page-btn { width: 40px; height: 40px; border: 1.5px solid #ddd; background: var(--white); cursor: pointer; font-size: 13px; font-family: var(--font); color: var(--gray-text); transition: all 0.2s; }
+    .page-btn.active { border-color: var(--teal); color: var(--teal); font-weight: 700; }
+    .page-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .newsletter-band { background: var(--dark); padding: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .newsletter-band h2 { color: var(--white); max-width: 400px; }
+    .newsletter-band p { color: rgba(255,255,255,0.6); margin-top: 10px; }
+    .newsletter-form { display: flex; gap: 0; flex-shrink: 0; }
+    .newsletter-form input { font-family: var(--font); font-size: 13px; padding: 14px 20px; border: none; width: 280px; background: rgba(255,255,255,0.1); color: var(--white); outline: none; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .newsletter-form button { background: var(--teal); color: var(--white); font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; border: none; cursor: pointer; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">E-Insights</div>
+    <h1>Actualités & Expertises</h1>
+    <p>Analyses, cas clients, tendances marché et insights d'experts pour rester à la pointe de l'expérience client et de la transformation digitale.</p>
+  </div>
+
+  <section class="actu-section">
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-cat="all">Tous</button>
+      <button class="filter-btn" data-cat="Intelligence Artificielle">Intelligence Artificielle</button>
+      <button class="filter-btn" data-cat="Success Story">Success Stories</button>
+      <button class="filter-btn" data-cat="Expertise">Expertise</button>
+      <button class="filter-btn" data-cat="Événement">Événements</button>
+      <button class="filter-btn" data-cat="Partenariat">Partenariats</button>
+    </div>
+    <div class="news-grid" id="news-grid"></div>
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">→</button>
+    </div>
+  </section>
+
+  <div class="newsletter-band">
+    <div>
+      <h2>Restez informé de nos dernières actualités</h2>
+      <p>Newsletter mensuelle · Insights exclusifs · Pas de spam</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Votre adresse email" />
+      <button>S'abonner →</button>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script>
+    let allNews = [];
+    let activeFilter = 'all';
+
+    fetch('data.json').then(r=>r.json()).then(data => {
+      allNews = data.actualites;
+      renderNews(allNews);
+    });
+
+    function renderNews(news) {
+      const grid = document.getElementById('news-grid');
+      grid.innerHTML = '';
+      news.forEach((a, i) => {
+        const featured = i === 0 ? 'news-featured' : '';
+        grid.innerHTML += `<div class="news-card ${featured}">
+          <div class="news-card-img"><img src="${a.image}" alt="${a.titre}" /></div>
+          <div class="news-card-body">
+            <span class="tag tag-teal">${a.categorie}</span>
+            <h3>${a.titre}</h3>
+            <p>${a.extrait}</p>
+            <div class="news-card-foot">
+              <span class="news-date">${a.date}</span>
+              <a href="#" class="link-all" style="font-size:10px;">Lire →</a>
+            </div>
+          </div>
+        </div>`;
+      });
+    }
+
+    document.getElementById('filters').addEventListener('click', e => {
+      if (!e.target.classList.contains('filter-btn')) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      activeFilter = e.target.dataset.cat;
+      const filtered = activeFilter === 'all' ? allNews : allNews.filter(a => a.categorie === activeFilter);
+      renderNews(filtered);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evoluciona — Driven by Empathy, Powered by Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero { position:relative; height:100vh; min-height:600px; overflow:hidden; }
+    .hero-slide { position:absolute; inset:0; opacity:0; transition:opacity 0.8s ease; }
+    .hero-slide.active { opacity:1; }
+    .hero-slide img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,0.58) 45%, rgba(0,0,0,0.1)); }
+    .hero-content { position:absolute; bottom:110px; left:80px; max-width:580px; }
+    .hero-content h1 { color:var(--white); }
+    .hero-pagination { position:absolute; bottom:50px; left:80px; display:flex; gap:8px; }
+    .hero-dot { width:28px; height:28px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.4); background:transparent; cursor:pointer; font-size:10px; color:rgba(255,255,255,0.5); font-weight:500; font-family:var(--font); transition:all 0.2s; }
+    .hero-dot.active { border-color:var(--teal); color:var(--white); background:var(--teal); }
+
+    .services-section { padding:var(--section-pad); background:var(--white); }
+    .service-card { background:#1e1e35; border-radius:4px; overflow:hidden; min-height:420px; display:flex; flex-direction:column; }
+    .service-tabs { display:flex; background:rgba(255,255,255,0.06); border-bottom:0.5px solid rgba(255,255,255,0.08); }
+    .service-tab { padding:12px 24px; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); cursor:pointer; border-bottom:2px solid transparent; font-family:var(--font); transition:all 0.2s; }
+    .service-tab.active { color:var(--white); border-bottom-color:var(--teal); }
+    .service-inner { display:flex; flex:1; }
+    .service-text { padding:48px; width:45%; display:flex; flex-direction:column; justify-content:center; gap:18px; }
+    .service-text h2 { color:var(--white); }
+    .service-text p { color:rgba(255,255,255,0.6); font-size:14px; max-width:300px; }
+    .service-img { width:55%; overflow:hidden; }
+    .service-img img { width:100%; height:100%; object-fit:cover; }
+
+    .enquire-section { padding:var(--section-pad); background:var(--teal); }
+    .enquire-head { display:flex; align-items:baseline; gap:20px; margin-bottom:40px; }
+    .enquire-head h2 { color:var(--white); }
+    .enquire-sub { font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.65); padding-left:20px; border-left:1px solid rgba(255,255,255,0.35); }
+    .enquire-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    .enquire-card { position:relative; overflow:hidden; min-height:380px; cursor:pointer; }
+    .enquire-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+    .enquire-card:hover img { transform:scale(1.04); }
+    .enquire-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.78) 45%, transparent); display:flex; flex-direction:column; justify-content:flex-end; padding:32px; gap:10px; }
+    .enquire-overlay h3 { color:var(--white); }
+    .enquire-footer-row { display:flex; align-items:center; justify-content:space-between; margin-top:32px; }
+
+    .start-section { position:relative; min-height:480px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .start-section img.bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .start-overlay { position:absolute; inset:0; background:rgba(26,26,46,0.68); }
+    .start-content { position:relative; z-index:2; text-align:center; display:flex; flex-direction:column; align-items:center; gap:32px; }
+    .start-content h2 { color:var(--white); }
+    .btn-circle { width:58px; height:58px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; color:var(--white); cursor:pointer; background:transparent; font-size:18px; transition:all 0.25s; }
+    .btn-circle:hover { background:var(--teal); border-color:var(--teal); transform:scale(1.08); }
+
+    .insights-section { padding:var(--section-pad); background:var(--white); }
+    .insights-title { font-size:clamp(28px,3.5vw,44px); font-weight:700; letter-spacing:-0.02em; margin-bottom:48px; }
+    .insights-title span { color:var(--blue); }
+    .insights-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .insight-card { display:flex; flex-direction:column; cursor:pointer; }
+    .insight-img { aspect-ratio:4/3; overflow:hidden; }
+    .insight-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .insight-card:hover .insight-img img { transform:scale(1.05); }
+    .insight-body { padding:16px 0; display:flex; flex-direction:column; gap:8px; flex:1; }
+    .insight-body h4 { color:var(--dark); }
+    .insight-foot { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:12px; border-top:0.5px solid #eee; }
+    .insight-date { font-size:10px; color:var(--gray-text); }
+    .arrow-link { color:var(--teal); text-decoration:none; font-size:16px; transition:transform 0.2s; display:inline-block; }
+    .insight-card:hover .arrow-link { transform:translateX(4px); }
+    .insights-footer-row { display:flex; align-items:center; justify-content:space-between; margin-top:40px; }
+    .pag-dots { display:flex; gap:8px; }
+    .pag-dot { width:28px; height:28px; border-radius:50%; border:1.5px solid #ddd; background:transparent; cursor:pointer; font-size:10px; color:#aaa; font-family:var(--font); transition:all 0.2s; }
+    .pag-dot.active { border-color:var(--teal); color:var(--teal); }
+    .link-all { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--dark); text-decoration:none; border-bottom:1px solid var(--dark); padding-bottom:2px; transition:color 0.2s; }
+    .link-all:hover { color:var(--teal); border-color:var(--teal); }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <section class="hero">
+    <div class="hero-slide active"><img src="assets/images/img-header.jpg" alt="Hero" /></div>
+    <div class="hero-slide"><img src="assets/images/img-slide1.jpg" alt="Slide 2" /></div>
+    <div class="hero-slide"><img src="assets/images/img-slide2.jpg" alt="Slide 3" /></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Driven by Empathy,<br>Powered by Technology.</h1>
+    </div>
+    <div class="hero-pagination">
+      <button class="hero-dot active" onclick="goSlide(0)">1</button>
+      <button class="hero-dot" onclick="goSlide(1)">2</button>
+      <button class="hero-dot" onclick="goSlide(2)">3</button>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 style="text-align:center;color:var(--teal);margin-bottom:48px;">Explore our services</h2>
+    <div class="service-card">
+      <div class="service-tabs">
+        <button class="service-tab active">Advanced Digital Solutions</button>
+        <button class="service-tab">Consulting</button>
+        <button class="service-tab">Technological Solutions</button>
+        <button class="service-tab">Analytics & IA</button>
+      </div>
+      <div class="service-inner">
+        <div class="service-text">
+          <span class="section-eyebrow">Advanced Digital Solutions</span>
+          <h2>Engage with<br>your customers</h2>
+          <p>We help you evolve towards an omnichannel strategy, improving and optimizing your digital channels.</p>
+          <a href="services.html" class="btn-outline-white" style="width:fit-content;">Discover Service →</a>
+        </div>
+        <div class="service-img"><img src="assets/images/img-slide3.jpg" alt="Service" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="enquire-section">
+    <div class="enquire-head"><h2>Enquire</h2><span class="enquire-sub">Our Success Cases</span></div>
+    <div class="enquire-grid">
+      <div class="enquire-card">
+        <img src="assets/images/enquire-img1.jpg" alt="Case 1" />
+        <div class="enquire-overlay">
+          <span class="tag tag-teal">Industry: Utilities</span>
+          <h3>Optimizing the Contact Center with Speech Analytics</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <button class="btn-circle" style="width:36px;height:36px;font-size:14px;">→</button>
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">View Case</span>
+          </div>
+        </div>
+      </div>
+      <div class="enquire-card">
+        <img src="assets/images/enquire-img2.jpg" alt="Case 2" />
+        <div class="enquire-overlay">
+          <span class="tag tag-teal">Industry: Retail</span>
+          <h3>Réduction du churn de 35% grâce à l'engagement client</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <button class="btn-circle" style="width:36px;height:36px;font-size:14px;">→</button>
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">View Case</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="enquire-footer-row">
+      <div class="pag-dots"><button class="pag-dot active">1</button><button class="pag-dot">2</button></div>
+      <a href="#" class="btn-outline-white">All Cases →</a>
+    </div>
+  </section>
+
+  <section class="start-section">
+    <img class="bg" src="assets/images/img-start.jpg" alt="Start" />
+    <div class="start-overlay"></div>
+    <div class="start-content">
+      <h2>Start your projects</h2>
+      <a href="contact.html"><button class="btn-circle">→</button></a>
+    </div>
+  </section>
+
+  <section class="insights-section">
+    <div class="insights-title">E<span>-Insights</span></div>
+    <div class="insights-grid" id="insights-grid"></div>
+    <div class="insights-footer-row">
+      <div class="pag-dots"><button class="pag-dot active">1</button><button class="pag-dot">2</button></div>
+      <a href="actualites.html" class="link-all">All E-Insights →</a>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script>
+    let cur = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    function goSlide(n) {
+      slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+      cur = n; slides[cur].classList.add('active'); dots[cur].classList.add('active');
+    }
+    setInterval(() => goSlide((cur+1)%slides.length), 5000);
+
+    fetch('data.json').then(r=>r.json()).then(data => {
+      const grid = document.getElementById('insights-grid');
+      data.actualites.slice(0,4).forEach(a => {
+        grid.innerHTML += `<div class="insight-card">
+          <div class="insight-img"><img src="${a.image}" alt="${a.titre}" /></div>
+          <div class="insight-body">
+            <span class="tag tag-teal">${a.categorie}</span>
+            <h4>${a.titre}</h4>
+            <div class="insight-foot">
+              <span class="insight-date">${a.date}</span>
+              <a href="actualites.html" class="arrow-link">→</a>
+            </div>
+          </div>
+        </div>`;
+      });
+    });
+  </script>
+</body>
+</html>

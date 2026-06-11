@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrières — Evoluciona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .values-section { padding: var(--section-pad); background: var(--white); }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #eee; margin-top: 56px; }
+    .value-card { background: var(--white); padding: 40px 32px; display: flex; flex-direction: column; gap: 14px; }
+    .value-icon { font-size: 28px; }
+    .value-card h4 { color: var(--dark); font-size: 17px; }
+    .value-card p { font-size: 13px; }
+
+    .offers-section { padding: var(--section-pad); background: var(--gray-light); }
+    .offers-filters { display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+    .offers-grid { display: flex; flex-direction: column; gap: 2px; }
+    .offer-card { background: var(--white); padding: 28px 36px; cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; }
+    .offer-card:hover { border-left-color: var(--teal); background: #fafafa; }
+    .offer-header { display: flex; align-items: center; justify-content: space-between; }
+    .offer-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .offer-meta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .offer-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-text); display: flex; align-items: center; gap: 5px; }
+    .offer-toggle { font-size: 20px; color: var(--teal); font-weight: 300; transition: transform 0.3s; }
+    .offer-detail { display: none; padding-top: 24px; margin-top: 24px; border-top: 0.5px solid #eee; }
+    .offer-detail.open { display: block; }
+    .offer-detail p { font-size: 14px; margin-bottom: 20px; }
+    .offer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
+    .offer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .offer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .offer-col ul li { font-size: 13px; color: var(--gray-text); display: flex; align-items: flex-start; gap: 8px; }
+    .offer-col ul li::before { content: '–'; color: var(--teal); flex-shrink: 0; }
+    .offer-toggle-icon.open { transform: rotate(45deg); }
+
+    .cta-careers { background: var(--dark); padding: var(--section-pad); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-careers h2 { color: var(--white); }
+    .cta-careers p { color: rgba(255,255,255,0.6); margin-top: 12px; }
+    .cta-careers-img { overflow: hidden; max-height: 400px; }
+    .cta-careers-img img { width: 100%; height: 100%; object-fit: cover; }
+    .stats-row { display: flex; gap: 40px; margin-top: 32px; }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num { font-size: 36px; font-weight: 700; color: var(--teal); letter-spacing: -0.02em; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">Carrières</div>
+    <h1>Rejoignez une équipe<br>qui réinvente la CX</h1>
+    <p>Chez Evoluciona, nous croyons que l'excellence de l'expérience client commence par l'excellence de l'expérience collaborateur.</p>
+  </div>
+
+  <section class="values-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Nos valeurs</div>
+      <h2>Ce qui nous anime au quotidien</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h4>Empathie</h4>
+        <p>Nous plaçons l'humain au centre de chaque décision, qu'il s'agisse de nos clients ou de nos collaborateurs.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <h4>Innovation</h4>
+        <p>Nous explorons en permanence de nouvelles approches pour rester à la pointe de la transformation digitale.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h4>Impact</h4>
+        <p>Nos solutions transforment des millions d'interactions client chaque jour à travers le monde.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h4>Excellence</h4>
+        <p>Nous visons l'excellence dans chaque projet, avec une exigence de qualité qui ne se négocie pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-careers">
+    <div>
+      <div class="section-eyebrow">Evoluciona en chiffres</div>
+      <h2>Grandissez avec nous</h2>
+      <p>Rejoindre Evoluciona, c'est intégrer un groupe international en forte croissance, au cœur de la révolution de l'expérience client.</p>
+      <div class="stats-row">
+        <div class="stat-item"><span class="stat-num">1 200+</span><span class="stat-label">Collaborateurs</span></div>
+        <div class="stat-item"><span class="stat-num">12</span><span class="stat-label">Pays</span></div>
+        <div class="stat-item"><span class="stat-num">94%</span><span class="stat-label">Satisfaction collaborateur</span></div>
+      </div>
+      <div style="margin-top:32px;display:flex;gap:16px;">
+        <a href="contact.html" class="btn-primary">Candidature spontanée →</a>
+      </div>
+    </div>
+    <div class="cta-careers-img">
+      <img src="assets/images/img-start.jpg" alt="Team" />
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Offres d'emploi</div>
+      <h2>Nos postes ouverts</h2>
+    </div>
+    <div class="offers-filters" id="offers-filters">
+      <button class="filter-btn active" data-dept="all">Tous les postes</button>
+      <button class="filter-btn" data-dept="Design & Digital">Design & Digital</button>
+      <button class="filter-btn" data-dept="Intelligence Artificielle">Intelligence Artificielle</button>
+      <button class="filter-btn" data-dept="Consulting">Consulting</button>
+      <button class="filter-btn" data-dept="Technology">Technology</button>
+      <button class="filter-btn" data-dept="Marketing">Marketing</button>
+    </div>
+    <div class="offers-grid" id="offers-grid"></div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script>
+    let allOffers = [];
+
+    fetch('data.json').then(r=>r.json()).then(data => {
+      allOffers = data.offres;
+      renderOffers(allOffers);
+    });
+
+    function renderOffers(offers) {
+      const grid = document.getElementById('offers-grid');
+      grid.innerHTML = '';
+      if (offers.length === 0) {
+        grid.innerHTML = '<p style="padding:40px;color:var(--gray-text);text-align:center;">Aucun poste disponible dans cette catégorie pour le moment.</p>';
+        return;
+      }
+      offers.forEach(o => {
+        const missions = o.missions.map(m => `<li>${m}</li>`).join('');
+        const profil = o.profil.map(p => `<li>${p}</li>`).join('');
+        grid.innerHTML += `
+        <div class="offer-card" id="offer-${o.id}">
+          <div class="offer-header" onclick="toggleOffer(${o.id})">
+            <div>
+              <div class="offer-title">${o.titre}</div>
+              <div class="offer-meta">
+                <span class="offer-tag">📍 ${o.lieu}</span>
+                <span class="offer-tag">💼 ${o.type}</span>
+                <span class="offer-tag">⭐ ${o.niveau}</span>
+                <span class="tag tag-blue" style="font-size:9px;">${o.departement}</span>
+              </div>
+            </div>
+            <span class="offer-toggle" id="toggle-${o.id}">+</span>
+          </div>
+          <div class="offer-detail" id="detail-${o.id}">
+            <p>${o.description}</p>
+            <div class="offer-cols">
+              <div class="offer-col">
+                <h5>Missions</h5>
+                <ul>${missions}</ul>
+              </div>
+              <div class="offer-col">
+                <h5>Profil recherché</h5>
+                <ul>${profil}</ul>
+              </div>
+            </div>
+            <a href="contact.html" class="btn-primary">Postuler →</a>
+          </div>
+        </div>`;
+      });
+    }
+
+    function toggleOffer(id) {
+      const detail = document.getElementById('detail-' + id);
+      const toggle = document.getElementById('toggle-' + id);
+      const isOpen = detail.classList.contains('open');
+      document.querySelectorAll('.offer-detail').forEach(d => d.classList.remove('open'));
+      document.querySelectorAll('.offer-toggle').forEach(t => { t.textContent = '+'; });
+      if (!isOpen) {
+        detail.classList.add('open');
+        toggle.textContent = '×';
+      }
+    }
+
+    document.getElementById('offers-filters').addEventListener('click', e => {
+      if (!e.target.classList.contains('filter-btn')) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      const dept = e.target.dataset.dept;
+      const filtered = dept === 'all' ? allOffers : allOffers.filter(o => o.departement === dept);
+      renderOffers(filtered);
+    });
+  </script>
+</body>
+</html>

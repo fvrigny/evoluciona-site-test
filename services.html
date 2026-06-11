@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Evoluciona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .services-list { padding: var(--section-pad); background: var(--white); }
+    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 480px; margin-bottom: 4px; overflow: hidden; }
+    .service-block:nth-child(even) { direction: rtl; }
+    .service-block:nth-child(even) > * { direction: ltr; }
+    .service-block-img { overflow: hidden; }
+    .service-block-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .service-block:hover .service-block-img img { transform: scale(1.03); }
+    .service-block-text { background: var(--dark); padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+    .service-block:nth-child(2) .service-block-text { background: #1e2a5e; }
+    .service-block:nth-child(3) .service-block-text { background: #003d3e; }
+    .service-block:nth-child(4) .service-block-text { background: #1A1A2E; }
+    .service-block-text h2 { color: var(--white); }
+    .service-block-text .sub { color: var(--teal); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; }
+    .service-block-text p { color: rgba(255,255,255,0.6); font-size: 14px; max-width: 380px; }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .features-list li { font-size: 13px; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 10px; }
+    .features-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+    .cta-band { background: var(--teal); padding: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .cta-band h2 { color: var(--white); max-width: 500px; }
+    .cta-band p { color: rgba(255,255,255,0.8); margin-top: 12px; max-width: 400px; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">Nos Services</div>
+    <h1>Des solutions pensées<br>pour vos enjeux client</h1>
+    <p>Nous combinons expertise conseil, technologie de pointe et intelligence artificielle pour transformer votre expérience client de bout en bout.</p>
+  </div>
+
+  <section class="services-list" id="services-grid">
+  </section>
+
+  <div class="cta-band">
+    <div>
+      <h2>Prêt à transformer votre expérience client ?</h2>
+      <p>Nos experts sont disponibles pour analyser vos enjeux et vous proposer une approche sur mesure.</p>
+    </div>
+    <a href="contact.html" class="btn-outline-white" style="white-space:nowrap;">Parler à un expert →</a>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script>
+    fetch('data.json').then(r=>r.json()).then(data => {
+      const grid = document.getElementById('services-grid');
+      data.services.forEach((s, i) => {
+        grid.innerHTML += `
+        <div class="service-block" id="${s.id}">
+          <div class="service-block-img"><img src="${s.image}" alt="${s.titre}" /></div>
+          <div class="service-block-text">
+            <span class="section-eyebrow">${s.titre}</span>
+            <h2>${s.sous_titre}</h2>
+            <p>${s.description}</p>
+            <ul class="features-list">
+              ${s.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+            <a href="contact.html" class="btn-outline-white" style="width:fit-content;margin-top:8px;">En savoir plus →</a>
+          </div>
+        </div>`;
+      });
+    });
+  </script>
+</body>
+</html>
